@@ -4,12 +4,13 @@ import mongoose from "mongoose";
 
 import { UserRoutes, PostsRoutes, UploadRoutes } from "./routes/index.js";
 
-dotenv.config();
+dotenv.config({path: '.env'});
 
 const app = express();
 const DB_CONNECTION = process.env.MONGODB_URI;
 const PORT = process.env.PORT || 8888;
 
+console.log(DB_CONNECTION);
 
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
