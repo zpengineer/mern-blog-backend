@@ -19,10 +19,10 @@ app.use('/posts', PostsRoutes);
 app.use('/upload', UploadRoutes);
 
 mongoose
-  .connect(DB_CONNECTION)
-  .then(() =>
-    app.listen(PORT, () =>
-      console.log(`Server is running @ : http://localhost:${PORT}`)
-    )
-  )
+  .connect(MONGODB_URI)
+  .then(() => console.log('DB ok'))
   .catch((error) => console.error(error));
+
+app.listen(PORT, () =>
+  console.log(`Server is running @ : http://localhost:${PORT}`)
+);
