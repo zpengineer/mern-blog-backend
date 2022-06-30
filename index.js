@@ -7,7 +7,7 @@ import { UserRoutes, PostsRoutes, UploadRoutes } from "./routes/index.js";
 dotenv.config();
 
 const app = express();
-const DB_CONNECTION = process.env.DATABASE_URL;
+const DB_CONNECTION = process.env.MONGODB_URI;
 const PORT = process.env.PORT || 8888;
 
 
@@ -19,7 +19,7 @@ app.use('/posts', PostsRoutes);
 app.use('/upload', UploadRoutes);
 
 mongoose
-  .connect(MONGODB_URI)
+  .connect(DB_CONNECTION)
   .then(() => console.log('DB ok'))
   .catch((error) => console.error(error));
 
