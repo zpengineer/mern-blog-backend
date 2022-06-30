@@ -19,7 +19,12 @@ app.use('/posts', PostsRoutes);
 app.use('/upload', UploadRoutes);
 
 mongoose
-  .connect(DB_CONNECTION)
+  .connect(DB_CONNECTION,{
+            //must add in order to not get any error masseges:
+            useUnifiedTopology:true,
+            useNewUrlParser: true,
+            useCreateIndex: true
+        })
   .then(() => console.log('DB ok'))
   .catch((error) => console.error(error));
 
