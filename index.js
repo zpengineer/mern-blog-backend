@@ -10,8 +10,6 @@ const app = express();
 const DB_CONNECTION = process.env.MONGODB_URI;
 const PORT = process.env.PORT || 8888;
 
-console.log(DB_CONNECTION);
-
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
@@ -20,12 +18,7 @@ app.use('/posts', PostsRoutes);
 app.use('/upload', UploadRoutes);
 
 mongoose
-  .connect(DB_CONNECTION,{
-            //must add in order to not get any error masseges:
-            useUnifiedTopology:true,
-            useNewUrlParser: true,
-            useCreateIndex: true
-        })
+  .connect(DB_CONNECTION)
   .then(() => console.log('DB ok'))
   .catch((error) => console.error(error));
 
