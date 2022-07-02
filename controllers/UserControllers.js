@@ -77,15 +77,14 @@ export const login = async (req, res) => {
             }
         );
 
-        await UserModel.findByIdAndUpdate(user._id, {token});
-
+        await UserModel.findByIdAndUpdate(user._id, { token });
+        
+        const { passwordHash, ...UserData } = user._doc;    
+        
         res.json(
             {
-                status: "success",
-                code: 200,
-                data: {
-                    token
-                },
+                ...UserData,
+                token
 
             }
         );
