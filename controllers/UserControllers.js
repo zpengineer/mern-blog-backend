@@ -110,7 +110,7 @@ export const logout = async (req, res) => {
 export const current = async (req, res) => {
     try {
 
-        const user = await UserModel.findById(req.userId);
+        const user = await UserModel.findById(req.user._id);
 
         if (!user) {
             return res.status(404).json({
