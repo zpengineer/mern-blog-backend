@@ -94,6 +94,19 @@ export const login = async (req, res) => {
     }
 };
 
+export const logout = async (req, res) => {
+    try {
+        
+        
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            message: "Не удалось разлогиниться",
+        });
+    }
+};
+
 export const current = async (req, res) => {
     try {
 
