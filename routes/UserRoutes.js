@@ -9,7 +9,7 @@ const UserRoutes = express.Router();
 
 UserRoutes.post('/register', RegisterValidation, handleValidationErrors, register);
 UserRoutes.post('/login', LoginValidation, handleValidationErrors, login);
-UserRoutes.post('/logout', logout);
+UserRoutes.get('/logout', CheckAuth, logout);
 UserRoutes.get('/current', CheckAuth, current);
 
 export default UserRoutes;

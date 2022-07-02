@@ -26,7 +26,7 @@ export const register = async (req, res) => {
             },
             'password228',
             {
-                expiresIn: '30d',
+                expiresIn: '24h',
             }
         );
 
@@ -73,16 +73,20 @@ export const login = async (req, res) => {
             },
             'password228',
             {
-                expiresIn: '30d',
+                expiresIn: '24h',
             }
         );
 
-        const { passwordHash, ...UserData } = user._doc;
+        await UserModel.findByIdAndUpdate(user._id, {token});
 
         res.json(
             {
-                ...UserData,
-                token
+                status: "success",
+                code: 200,
+                data: {
+                    token
+                },
+
             }
         );
 
@@ -95,16 +99,13 @@ export const login = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-    try {
-        
-        
 
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({
-            message: "Не удалось разлогиниться",
-        });
-    }
+    const { _id } = req.user;
+    
+    await UserModel.findByIdAndUpdate(_id, { token: null });
+    
+    res.status(204).json();
+
 };
 
 export const current = async (req, res) => {
