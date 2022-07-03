@@ -43,7 +43,7 @@ jspm_packages/
 npm-debug.log
 .DS_Store
 /*.env
-
+uploads/*
 
 # TypeScript v1 declaration files
 typings/
