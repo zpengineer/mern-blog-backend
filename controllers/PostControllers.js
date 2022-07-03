@@ -60,7 +60,7 @@ export const updatePost = async (req, res) => {
                 })
             } else {
                 res.json({
-                    message: "Статья успешно обновлена"
+                    data
                 });
             }
         })
@@ -77,6 +77,7 @@ export const getOnePost = async (req, res) => {
   
     const postId = req.params.id;
 
+
     BlogModel.findByIdAndUpdate(postId, { $inc: { viewsCount: 1 } }, { returnDocument: 'after' })
         .then(data => {
             
@@ -86,7 +87,7 @@ export const getOnePost = async (req, res) => {
                 })
             } else {
                 res.json({
-                    message: "Данные успешно возвращены"
+                    data
                 });
             }
 
