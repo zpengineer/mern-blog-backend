@@ -3,7 +3,7 @@ const current = async (req, res, next) => {
 
   res.status(200).json({
     user: {
-      fullName,
+      name: fullName,
       email,
       avatarURL,
     },
