@@ -7,7 +7,7 @@ const addPost = async (req, res, next) => {
   const result = await services.addPost({id, body});
 
   res.status(201).json({
-    data: result,
+    posts: result,
   });
 };
 
