@@ -1,6 +1,10 @@
 {
   "name": "mern-blog-backend",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "engines": {
+    "node": "16.16.0",
+    "npm": "8.11.0"
+  },
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./server.js",
