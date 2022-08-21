@@ -6,7 +6,9 @@ const getById = tryCatchWrapper(async ({id}) => {
       .findByIdAndUpdate(
           id,
           {$inc: {viewsCount: 1}},
-          {returnDocument: 'after'});
+          {returnDocument: 'after'})
+      .populate('owner', '_id fullName email avatarURL')
+      .exec();
 
   if (!data) {
     return null;
