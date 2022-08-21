@@ -13,6 +13,7 @@ const singin = async (req, res, next) => {
 
   res.status(201).json({
     user: {
+      name: user.fullName,
       email: user.email,
       token: token,
     },
