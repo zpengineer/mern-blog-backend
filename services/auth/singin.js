@@ -16,7 +16,7 @@ const singin = tryCatchWrapper(async ({email, password}) => {
     id: user._id,
   };
 
-  const token = jwt.sign(payload, SECRET_KEY, {expiresIn: '24h'});
+  const token = jwt.sign(payload, SECRET_KEY, {expiresIn: '30d'});
 
   await User.findByIdAndUpdate(user._id, {token});
 
