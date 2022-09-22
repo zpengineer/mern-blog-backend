@@ -11,6 +11,10 @@ const {posts} = require('../../controllers');
 
 router.get('/', ctrlWrapper(posts.getAll));
 
+router.get('/popular', ctrlWrapper(posts.getAllPopular));
+
+router.get('/tags', ctrlWrapper(posts.getAllTags));
+
 router.get('/:postId', ctrlWrapper(posts.getById));
 
 router.post(
