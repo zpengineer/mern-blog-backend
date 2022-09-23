@@ -15,6 +15,8 @@ router.get('/popular', ctrlWrapper(posts.getAllPopular));
 
 router.get('/tags', ctrlWrapper(posts.getAllTags));
 
+router.get('/tags/:tag', ctrlWrapper(posts.getTagsPosts));
+
 router.get('/:postId', ctrlWrapper(posts.getById));
 
 router.post(
