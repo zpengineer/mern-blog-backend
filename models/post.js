@@ -25,14 +25,20 @@ const postSchema = new Schema(
         ref: 'user',
         required: true,
       },
+      comments: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'comment',
+        },
+      ],
       imgUrl: String,
-    }, {versionKey: false, timestamps: true});
+    },
+    {versionKey: false, timestamps: true},
+);
 
 const joiAddPostSchema = Joi.object({
-  title: Joi.string()
-      .required(),
-  description: Joi.string()
-      .required(),
+  title: Joi.string().required(),
+  description: Joi.string().required(),
   tags: Joi.array().items(Joi.string()),
   viewsCount: Joi.number(),
   imgUrl: Joi.string(),

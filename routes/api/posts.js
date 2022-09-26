@@ -1,13 +1,9 @@
 const express = require('express');
 const router = new express.Router();
 
-const {
-  ctrlWrapper,
-  validation,
-  checkAuth,
-} = require('../../middlewares');
+const {ctrlWrapper, validation, checkAuth} = require('../../middlewares');
 const {joiAddPostSchema} = require('../../models/post');
-const {posts} = require('../../controllers');
+const {posts, comments} = require('../../controllers');
 
 router.get('/', ctrlWrapper(posts.getAll));
 
@@ -28,10 +24,8 @@ router.post(
 
 router.delete('/:postId', ctrlWrapper(posts.deletePost));
 
-router.put(
-    '/:postId',
-    checkAuth,
-    ctrlWrapper(posts.updatePost),
-);
+router.put('/:postId', checkAuth, ctrlWrapper(posts.updatePost));
+
+router.post('/:postId/comment', checkAuth, ctrlWrapper(comments.addComment));
 
 module.exports = router;
