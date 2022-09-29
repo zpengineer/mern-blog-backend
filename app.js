@@ -8,6 +8,7 @@ const app = express();
 const authRouter = require('./routes/api/auth');
 const userRouter = require('./routes/api/users');
 const postsRouter = require('./routes/api/posts');
+const commentsRouter = require('./routes/api/comments');
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
@@ -21,6 +22,8 @@ app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
 
 app.use('/api/posts', postsRouter);
+
+app.use('/api/comments', commentsRouter);
 
 app.use((req, res) => {
   res.status(404).json({message: 'Not found'});

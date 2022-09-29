@@ -25,12 +25,6 @@ const postSchema = new Schema(
         ref: 'user',
         required: true,
       },
-      comments: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: 'comment',
-        },
-      ],
       imgUrl: String,
     },
     {versionKey: false, timestamps: true},
