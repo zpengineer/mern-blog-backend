@@ -8,6 +8,10 @@ const getById = tryCatchWrapper(async ({id}) => {
       {returnDocument: 'after'},
   )
       .populate('owner', '_id fullName email avatarURL')
+      .populate({
+        path: 'comments',
+        populate: {path: 'owner', select: '_id fullName email avatarURL'},
+      })
       .exec();
 
   if (!data) {
