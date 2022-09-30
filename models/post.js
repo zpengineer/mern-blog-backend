@@ -28,7 +28,7 @@ const postSchema = new Schema(
       comments: [
         {
           type: Schema.Types.ObjectId,
-          ref: 'comments',
+          ref: 'comment',
         },
       ],
       imgUrl: String,
