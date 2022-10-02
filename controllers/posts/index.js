@@ -6,6 +6,7 @@ const updatePost = require('./update');
 const getAllPopular = require('./getAllPopular');
 const getAllTags = require('./getAllTags');
 const getTagsPosts = require('./getTagsPosts');
+const searchPosts = require('./serchPosts');
 
 module.exports = {
   addPost,
@@ -16,4 +17,5 @@ module.exports = {
   getAllPopular,
   getAllTags,
   getTagsPosts,
+  searchPosts,
 };

@@ -13,4 +13,8 @@ router.patch(
     ctrlWrapper(users.uploadAvatar),
 );
 
+router.patch('/follow/:id', checkAuth, ctrlWrapper(users.follow));
+
+router.patch('/unfollow/:id', checkAuth, ctrlWrapper(users.unFollow));
+
 module.exports = router;

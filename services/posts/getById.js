@@ -7,7 +7,7 @@ const getById = tryCatchWrapper(async ({id}) => {
       {$inc: {viewsCount: 1}},
       {returnDocument: 'after'},
   )
-      .populate('owner', '_id fullName email avatarURL')
+      .populate('owner', '_id fullName email avatarURL following followers')
       .exec();
 
   if (!data) {
