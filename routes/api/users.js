@@ -6,6 +6,8 @@ const {users} = require('../../controllers');
 
 router.get('/current', checkAuth, ctrlWrapper(users.current));
 
+router.get('/author/:postId', ctrlWrapper(users.author));
+
 router.patch(
     '/avatars',
     checkAuth,
