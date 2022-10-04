@@ -4,6 +4,7 @@ const subscriptionPosts = async (req, res, next) => {
   const {following} = req.user;
 
   const posts = await Post.find({owner: {$in: following}})
+      .populate('owner', '_id fullName email avatarURL')
       .sort({createdAt: -1})
       .exec();
 
