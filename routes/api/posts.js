@@ -11,6 +11,8 @@ router.get('/search', ctrlWrapper(posts.searchPosts));
 
 router.get('/popular', ctrlWrapper(posts.getAllPopular));
 
+router.get('/subscription', checkAuth, ctrlWrapper(posts.subscriptionPosts));
+
 router.get('/tags', ctrlWrapper(posts.getAllTags));
 
 router.get('/tags/:tag', ctrlWrapper(posts.getTagsPosts));
