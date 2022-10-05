@@ -12,8 +12,11 @@ const singup = async (req, res, next) => {
   }
 
   res.status(201).json({
-    fullName: result.fullName,
-    avatarUrl: result.avatarURL,
+    name: result.fullName,
+    email: result.email,
+    following: result.following,
+    followers: result.followers,
+    avatarURL: result.avatarURL,
   });
 };
 

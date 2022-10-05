@@ -3,6 +3,7 @@ const {tryCatchWrapper} = require('../../middlewares');
 
 const logout = tryCatchWrapper(async ({id}) => {
   const user = await User.findById(id);
+
   if (!user) {
     return null;
   }

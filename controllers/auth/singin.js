@@ -15,6 +15,9 @@ const singin = async (req, res, next) => {
     user: {
       name: user.fullName,
       email: user.email,
+      following: user.following,
+      followers: user.followers,
+      avatarURL: user.avatarURL,
       token: token,
     },
   });

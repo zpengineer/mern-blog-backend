@@ -13,6 +13,6 @@ router.post(
 
 router.post('/singin', validation(joiLoginSchema), ctrlWrapper(auth.singin));
 
-router.get('/logout', checkAuth, ctrlWrapper(auth.logout));
+router.post('/logout', checkAuth, ctrlWrapper(auth.logout));
 
 module.exports = router;
