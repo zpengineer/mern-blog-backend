@@ -1,17 +1,14 @@
-const {Post} = require('../../models');
-// const { posts: services } = require('../../services');
+const {posts: services} = require('../../services');
 
 const searchPosts = async (req, res, next) => {
   const {query} = req.query;
 
-  console.log(query);
+  const posts = await services.searchPosts({query});
 
-  const posts = await Post.find({title: {$regex: query, $options: 'i'}})
-      .populate('owner', '_id fullName email avatarURL following followers')
-      .exec();
-
-  if (posts.length === 0) {
-    return res.status(404).json({
+  if (!posts) {
+    return res.json({
+      status: 'error',
+      code: 404,
       message: `Not found posts with search query: '${query}'`,
     });
   }

@@ -7,6 +7,8 @@ const getAll = tryCatchWrapper(async () => {
       .sort({createdAt: -1})
       .exec();
 
+  if (data.length === 0) return null;
+
   return data;
 });
 

@@ -1,12 +1,15 @@
-const {Comment} = require('../../models');
+const {comments: services} = require('../../services');
 
 const getAllComments = async (req, res, next) => {
-  const comments = await Comment.find()
-      .populate('owner', '_id fullName email avatarURL')
-      .populate('post', 'title')
-      .sort({createdAt: -1})
-      .limit(3)
-      .exec();
+  const comments = await services.getAllComments();
+
+  if (!comments) {
+    res.json({
+      status: 'error',
+      code: 404,
+      message: 'No Comments yet, your thoughts are welcome',
+    });
+  }
 
   res.json({
     status: 'success',

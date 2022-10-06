@@ -8,6 +8,8 @@ const getAllTags = tryCatchWrapper(async () => {
       .flatMap((data) => data.tags)
       .filter((tag, index, array) => array.indexOf(tag) === index);
 
+  if (!tags) return null;
+
   return tags;
 });
 

@@ -5,6 +5,14 @@ const getTagsPosts = async (req, res, next) => {
 
   const result = await services.getTagsPosts({tag});
 
+  if (!result) {
+    return res.json({
+      status: 'error',
+      code: 404,
+      message: `Search by tag: ${tag} returned no results.`,
+    });
+  }
+
   res.json({
     status: 'success',
     code: 200,

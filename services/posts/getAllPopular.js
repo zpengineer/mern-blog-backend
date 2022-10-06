@@ -7,6 +7,8 @@ const getAllPopular = tryCatchWrapper(async () => {
       .sort({viewsCount: -1})
       .exec();
 
+  if (data.length === 0) return null;
+
   return data;
 });
 

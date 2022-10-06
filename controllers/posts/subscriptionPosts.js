@@ -1,12 +1,18 @@
-const {Post} = require('../../models');
+const {posts: services} = require('../../services');
 
 const subscriptionPosts = async (req, res, next) => {
   const {following} = req.user;
 
-  const posts = await Post.find({owner: {$in: following}})
-      .populate('owner', '_id fullName email avatarURL')
-      .sort({createdAt: -1})
-      .exec();
+  const posts = await services.subscriptionPosts({following});
+
+  if (!posts) {
+    return res.json({
+      status: 'error',
+      code: 404,
+      message: `Want to be the first to know about new content? 
+      Subscribe to your favorite author.`,
+    });
+  }
 
   res.json({
     status: 'success',
