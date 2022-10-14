@@ -15,9 +15,7 @@ const uploadAvatar = async (req, res, next) => {
 
     await User.findByIdAndUpdate(id, {avatarURL: uploadResponse.secure_url});
 
-    res.status(200).json(
-        {avatarURL: uploadResponse.secure_url},
-    );
+    res.status(200).json({avatarURL: uploadResponse.secure_url});
   } catch (error) {
     await fs.unlink(tmpUpload);
     next(error);
