@@ -30,4 +30,6 @@ router.delete('/:postId', ctrlWrapper(posts.deletePost));
 
 router.put('/:postId', checkAuth, ctrlWrapper(posts.updatePost));
 
+router.patch('/like/:postId', checkAuth, ctrlWrapper(posts.likePost));
+
 module.exports = router;

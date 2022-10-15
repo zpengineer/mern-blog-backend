@@ -15,6 +15,18 @@ const commentShema = new Schema(
         type: Schema.Types.ObjectId,
         ref: 'user',
       },
+      like: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'user',
+        },
+      ],
+      dislike: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'user',
+        },
+      ],
     },
     {versionKey: false, timestamps: true},
 );

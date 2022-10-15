@@ -1,14 +1,12 @@
 const {Post} = require('../../models');
 const {tryCatchWrapper} = require('../../middlewares');
 
-const getById = tryCatchWrapper(async ({id}) => {
+const likePost = tryCatchWrapper(async ({id, userId}) => {
   const data = await Post.findByIdAndUpdate(
       id,
-      {$inc: {viewsCount: 1}},
+      {$addToSet: {like: userId}},
       {new: true},
-  )
-      .populate('owner', '_id fullName email avatarURL following followers')
-      .exec();
+  );
 
   if (!data) {
     return null;
@@ -17,4 +15,4 @@ const getById = tryCatchWrapper(async ({id}) => {
   return data;
 });
 
-module.exports = getById;
+module.exports = likePost;

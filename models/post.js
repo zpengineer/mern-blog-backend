@@ -31,6 +31,12 @@ const postSchema = new Schema(
           ref: 'comment',
         },
       ],
+      like: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'user',
+        },
+      ],
       imgUrl: String,
     },
     {versionKey: false, timestamps: true},

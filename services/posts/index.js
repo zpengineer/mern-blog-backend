@@ -8,6 +8,7 @@ const getAllTags = require('./getAllTags');
 const getTagsPosts = require('./getTagsPosts');
 const searchPosts = require('./searchPosts');
 const subscriptionPosts = require('./subscriptionPosts');
+const likePost = require('./likePost');
 
 module.exports = {
   addPost,
@@ -20,4 +21,5 @@ module.exports = {
   getTagsPosts,
   searchPosts,
   subscriptionPosts,
+  likePost,
 };
