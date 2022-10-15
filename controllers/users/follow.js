@@ -8,7 +8,7 @@ const follow = async (req, res, next) => {
     return res.status(400).json({error: 'You cannot follow yourself'});
   }
 
-  await User.findByIdAndUpdate(
+  const user = await User.findByIdAndUpdate(
       userId,
       {$addToSet: {following: followingId}},
       {new: true},
@@ -23,6 +23,9 @@ const follow = async (req, res, next) => {
   res.json({
     status: 'success',
     code: 200,
+    user: {
+      following: user.following,
+    },
   });
 };
 

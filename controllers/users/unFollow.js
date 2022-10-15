@@ -8,7 +8,7 @@ const unFollow = async (req, res, next) => {
     return res.status(400).json({error: 'You cannot follow yourself'});
   }
 
-  await User.updateOne(
+  const user = await User.updateOne(
       {_id: userId},
       {$pull: {following: followingId}},
       {new: true},
@@ -23,6 +23,9 @@ const unFollow = async (req, res, next) => {
   res.json({
     status: 'success',
     code: 200,
+    user: {
+      following: user.following,
+    },
   });
 };
 
