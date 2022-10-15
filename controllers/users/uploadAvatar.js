@@ -3,8 +3,6 @@ const {User} = require('../../models');
 const uploadAvatar = async (req, res, next) => {
   const {avatar} = req.body;
 
-  console.log(req.body);
-
   const {_id: id} = req.user;
 
   await User.findByIdAndUpdate(id, {avatarURL: avatar}, {new: true});

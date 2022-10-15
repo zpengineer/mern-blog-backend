@@ -5,7 +5,7 @@ const getById = tryCatchWrapper(async ({id}) => {
   const data = await Post.findByIdAndUpdate(
       id,
       {$inc: {viewsCount: 1}},
-      {new: true},
+      {returnDocument: 'after'},
   )
       .populate('owner', '_id fullName email avatarURL following followers')
       .exec();
